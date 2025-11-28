@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Las Guerreras - Invitación</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0f1724;
+  --card: #0b1220;
+  --accent: #eeeeee;
+  --muted: #b3c1d9;
+  --glass: rgba(255,255,255,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+
+body{
+  background:var(--bg);
+  color:white;
+  min-height:100vh;
+  
+}
+/* Pantalla inicial estilo kawaii */
+.welcome-kawaii {
+  height: 100vh;
+  width: 100%;
+  background: url('tu_imagen_de_fondo.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeGlow 1.5s ease forwards;
+}
+
+.welcome-content {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px 35px;
+  border-radius: 22px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.35);
+  box-shadow: 0 0 20px rgba(255, 176, 255, 0.5);
+}
+
+/* Título */
+.welcome-title {
+  font-size: 40px;
+  font-weight: 900;
+  color: #d8a67d;
+  text-shadow: 0 0 10px #53cae7;
+  margin-bottom: 5px;
+}
+
+/* Subtítulo kawaii */
+.welcome-sub {
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+/* Botón neon */
+.welcome-btn {
+  font-size: 18px;
+  padding: 10px 28px;
+  border-radius: 30px;
+  border: 3px solid #bd9168;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  transition: .3s ease;
+  box-shadow: 0px 0px 10px #746174;
+}
+
+.welcome-btn:hover {
+  background: rgba(255, 156, 255, 0.25);
+  transform: scale(1.08);
+  box-shadow: 0px 0px 15px #ff83ff;
+}
+
+/* Animación */
+@keyframes fadeGlow {
+  0% { opacity:0; transform:scale(0.92); filter:brightness(0.6); }
+  100% { opacity:1; transform:scale(1); filter:brightness(1); }
+}
+
+
+/* INVITATION */
+.invite-container {
+  width: 100%;
+  max-width: 900px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 40px auto;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.07);
+  display: none;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* Secciones internas */
+.section {
+  background: var(--card);
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: 0.3s ease;
+}
+.section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.section h3 {
+  font-size: 20px;
+  color: var(--accent);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  top: -10px;
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: fall 2.5s linear forwards;
+}
+
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(25px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(120vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* INVITE STYLES */
+.invite-wrapper {
+  display: none;
+  padding: 40px 20px;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.invite-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 35px 25px;
+  max-width: 650px;
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(231, 218, 96, 0.25);
+  transition: 0.4s ease;
+}
+.invite-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(231, 218, 96, 0.35);
+}
+
+.invite-title {
+  font-size: 21px;   /* antes 36px */
+  font-weight: 800;
+  color: #ff92ff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.invite-subtitle {
+  font-size: 16px;
+  color: #f5f5f5;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.invite-info-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.invite-item {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: 0.3s;
+}
+.invite-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.12);
+}
+
+.invite-item h3 {
+  margin-bottom: 5px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.invite-item p {
+  margin: 0;
+  font-size: 15px;
+  color: #cfcfcf;
+}
+
+.invite-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  text-decoration: none;
+  background: linear-gradient(90deg,#ff92ff,#8c52ff);
+  color: #fff;
+  font-weight: 600;
+  transition: .3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.invite-btn:hover {
+  filter: brightness(1.2);
+  transform: scale(1.08);
+}
+
+.invite-footer {
+  margin-top: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffe1ff;
+  opacity: .9;
+  letter-spacing: 1px;
+}
+
+/* Animation */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+#countdownBox {
+  text-align: center;
+  margin-top: 15px;
+}
+
+#countdown {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 8px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  animation: pulse 1.3s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.08); opacity: 1; }
+}
+#gallery {
+  text-align: center;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.carousel img {
+  width: 100%;
+  height: 450px;       /* altura fija para uniformidad */
+  flex-shrink: 0;
+  border-radius: 12px;
+  object-fit: cover;   /* mantiene proporción sin estirar */
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent, #007bff); /* fallback si no existe la variable */
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1); /* efecto hover más vistoso */
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Responsividad */
+@media (max-width: 400px) {
+  .carousel-container {
+    max-width: 95%;
+    margin: 10px auto;
+  }
+  .carousel-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+}
+.dresscode p:first-of-type{
+  color:#89f09a;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.dresscode{
+  background: linear-gradient(135deg, rgba(255,126,255,0.12), rgba(140,82,255,0.15));
+  border: 1px solid rgba(255,255,255,0.30);
+  box-shadow: 0 0 10px rgba(255,126,255,0.25);
+}
+.selfie-pass {
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.vip-pass {
+  width: 100%;
+  max-width: 230px;
+  height: 290px;
+  margin: 10px auto 0;
+  border-radius: 12px;
+  border: 2px dashed var(--accent);
+  background: rgba(255,255,255,0.07);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 14px;
+  position: relative;
+}
+
+/* Imagen dentro del pase */
+.vip-pass img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sello VIP */
+.vip-pass::after {
+  content: "GUERREROS CREW";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(136, 186, 243, 0.85);
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 4px #000;
+}
+.map-btn {
+  background: linear-gradient(135deg, #ff92ff, #9b59b6); /* degradado vibrante */
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.map-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+.welcome-img {
+  width: 100%;
+  max-width: 320px;   /* límite para que no se vea gigante */
+  border-radius: 16px;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  animation: fadeIn 1s ease forwards;
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN START -->
+<div id="welcomeScreen" class="welcome-kawaii">
+  <div class="welcome-content">
+    <h1 class="welcome-title">EmiFest 2026</h1>
+    <p class="welcome-sub">¡La misión Comienza!</p>
+
+    <!-- Imagen adaptada -->
+    <img src="0.jpg" alt="EmiFest 2026" class="welcome-img">
+
+    <button id="enterBtn" class="welcome-btn" onclick="showInvitation()">
+      Entrar 🚀
+    </button>
+  </div>
+</div>
+
+<!-- INVITACION -->
+<div class="invite-wrapper" id="invitation">
+  <div class="invite-card">
+
+    <h1 class="invite-title">✨ Los Guerreros ✨</h1>
+    <p class="invite-subtitle">K-POP NIGHT </p>
+
+    <div class="invite-info-grid">
+
+    <div class="section" id="countdownBox">
+  <h3>⏳ Falta para el gran día</h3>
+  <div id="countdown"></div>
+</div>
+
+
+  <p id="event-message" style="margin-top: 12px; font-weight: bold; color: var(--accent); display: none;">
+    ¡Ya comenzó la fiesta! 💃🎶
+  </p>
+</div>
+
+<div class="section" id="mapSection">
+  <h3>🗺️ Ubicación</h3>
+  <iframe 
+    width="100%" 
+    height="240" 
+    style="border:0; border-radius:12px; margin-top:10px;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=Lago+Chapultepec+124,+Agua+Azul+Secc+Pirules,+57510+Cd+Nezahualcóyotl,+Méx.&output=embed">
+  </iframe>
+
+  <!-- Botón para abrir la ubicación -->
+ <div style="text-align:center; margin-top:12px;">
+  <button 
+    class="map-btn"
+    onclick="window.open('https://www.google.com/maps?q=Lago+Chapultepec+124,+Agua+Azul+Secc+Pirules,+57510+Cd+Nezahualcóyotl,+Méx.', '_blank')">
+    📍 Abrir en Google Maps
+  </button>
+</div>
+
+<br>
+     <div class="invite-item dresscode">
+  <h3>👗 Dress Code</h3>
+  <p><strong>Vístete como tú, pero con estilo 🔥</strong></p>
+  <p>Solo actitud, flow y ganas de brillar ✨</p>
+</div>
+
+      <div class="section" id="gallery">
+  <h3>📸 Mis cumpleaños</h3>
+
+  <div class="carousel-container">
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">‹</button>
+
+    <div class="carousel">
+      <img src="1.jpg" alt="Foto 1">
+      <img src="2.jpg" alt="Foto 2">
+      <img src="3.jpg" alt="Foto 3">
+      <img src="4.jpg" alt="Foto 4">
+      <img src="5.jpg" alt="Foto 5">
+      <img src="6.jpg" alt="Foto 6">
+     
+
+    </div>
+
+    <button class="carousel-btn next" onclick="moveSlide(1)">›</button>
+  </div>
+</div>
+
+
+
+
+      <div class="invite-item">
+        <h3>📞 Confirmación</h3>
+        <p></p>
+        <a class="invite-btn" href="https://wa.me/5525648248?text=Confirmo%20asistencia" target="_blank">✔ Confirmar por WhatsApp</a>
+      </div>
+
+    </div>
+
+
+<!-- SELFIE PASS UPLOADER -->
+<div class="section selfie-pass">
+  <h3>📷 Credencial VIP Guerreros</h3>
+  <p style="font-size:14px;opacity:.8">Sube tu foto y obtén tu pase oficial 🔥</p>
+
+  <div class="vip-pass" id="vipPreview" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+    <p style="opacity:.7;">Tu foto aparecerá aquí</p>
+  </div>
+
+  <input type="file" accept="image/*" id="vipInput" style="margin-top:12px">
+  <button id="vipGenerateBtn" class="invite-btn" style="margin-top:10px;">Generar pase</button>
+  <button id="vipDownloadBtn" class="invite-btn" style="margin-top:10px;display:none;">Descargar pase</button>
+</div>
+
+<script>
+const vipInput = document.getElementById('vipInput');
+const vipPreview = document.getElementById('vipPreview');
+const vipGenerateBtn = document.getElementById('vipGenerateBtn');
+const vipDownloadBtn = document.getElementById('vipDownloadBtn');
+
+let lastCanvas = null;
+
+function loadImage(src){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+vipGenerateBtn.addEventListener('click', async () => {
+  const file = vipInput.files[0];
+  if(!file){
+    alert('Por favor selecciona una foto.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const dataUrl = e.target.result;
+    const img = await loadImage(dataUrl);
+
+    // Crear canvas
+    const canvas = document.createElement('canvas');
+    const w = 400;
+    const h = 500;
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+
+    // Fondo
+    ctx.fillStyle = '#1b0028';
+    ctx.fillRect(0, 0, w, h);
+
+    // Imagen centrada
+    const imgH = h*0.7;
+    const imgW = img.width * (imgH/img.height);
+    const x = (w - imgW)/2;
+    ctx.drawImage(img, x, 20, imgW, imgH);
+// Texto "¡Los esperamos!"
+ctx.font = 'bold 34px Montserrat, sans-serif';
+ctx.textAlign = 'center';
+
+// Gradiente neón
+const gradient = ctx.createLinearGradient(0, 0, w, 0);
+gradient.addColorStop(0, '#ff92ff');
+gradient.addColorStop(0.5, '#fff');
+gradient.addColorStop(1, '#8c52ff');
+ctx.fillStyle = gradient;
+
+// Sombra estilo glow
+ctx.shadowColor = '#ff92ff';
+ctx.shadowBlur = 20;
+ctx.shadowOffsetX = 0;
+ctx.shadowOffsetY = 0;
+
+// Texto principal
+ctx.fillText('¡Los esperamos!', w/2, h - 40);
+
+// Contorno extra para dar más fuerza
+ctx.lineWidth = 3;
+ctx.strokeStyle = '#fff';
+ctx.strokeText('¡Los esperamos!', w/2, h - 40);
+
+lastCanvas = canvas;
+    // Mostrar preview
+    vipPreview.innerHTML = '';
+    vipPreview.appendChild(canvas);
+
+    // Mostrar botón descargar
+    vipDownloadBtn.style.display = 'inline-block';
+  };
+
+  reader.readAsDataURL(file);
+});
+
+vipDownloadBtn.addEventListener('click', () => {
+  if(!lastCanvas) return;
+  const link = document.createElement('a');
+  link.href = lastCanvas.toDataURL('image/png');
+  link.download = 'pase_guerreras.png';
+  link.click();
+});
+</script>
+
+   <center> <p class="invite-footer">✨ ¡Los esperamos guerreros! ✨</p></center>
+  </div>
+</div>
+
+<script>
+
+
+// CONFETTI GENERATOR
+function confettiBurst(){
+  for(let i=0;i<50;i++){
+    const c=document.createElement("div");
+    c.classList.add("confetti");
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,60%)`;
+    c.style.animationDuration=(Math.random()*1+1.5)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
+  let slideIndex = 0;
+
+function moveSlide(direction) {
+  const carousel = document.querySelector(".carousel");
+  const totalSlides = carousel.children.length;
+
+  slideIndex = (slideIndex + direction + totalSlides) % totalSlides;
+  carousel.style.transform = `translateX(${-slideIndex * 100}%)`;
+}
+
+// BUTTON ACTION
+
+function showInvitation() {
+  confettiBurst();
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("invitation").style.display = "block";
+  window.scrollTo(0,0);
+}
+
+
+// COUNTDOWN
+const eventDate = new Date("2026-01-10T15:00:00").getTime();
+
+const timer = setInterval(() => {
+  const now = new Date().getTime();
+  const diff = eventDate - now;
+
+  if (diff <= 0) {
+    clearInterval(timer);
+    document.getElementById("countdown").innerHTML = "🎉 ¡Es hoy! 🎉";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    `${days}d : ${hours}h : ${mins}m : ${secs}s`;
+}, 1000);
+
+
+
+</script>
+
+
+</body>
+</html>
